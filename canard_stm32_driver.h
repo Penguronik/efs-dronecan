@@ -10,5 +10,6 @@
 
 int16_t canardSTM32Recieve(FDCAN_HandleTypeDef *hfdcan, uint32_t RxLocation, CanardCANFrame *const rx_frame);
 int16_t canardSTM32Transmit(FDCAN_HandleTypeDef *hfdcan, const CanardCANFrame* const tx_frame);
+void getUniqueID(uint8_t id[16]);
 
 #endif /* INC_CANARD_STM32_DRIVER_H_ */

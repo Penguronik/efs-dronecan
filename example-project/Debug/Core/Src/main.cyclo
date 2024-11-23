@@ -1,0 +1,14 @@
+../Core/Src/main.c:65:6:HAL_CAN_RxFifo0MsgPendingCallback	3
+../Core/Src/main.c:83:6:setupCANFilter	1
+../Core/Src/main.c:100:5:clock_gettime	2
+../Core/Src/main.c:115:6:handle_NodeStatus	11
+../Core/Src/main.c:168:6:handle_NotifyState	4
+../Core/Src/main.c:195:6:handle_GetNodeInfo	1
+../Core/Src/main.c:241:6:send_NodeStatus	1
+../Core/Src/main.c:270:6:shouldAcceptTransfer	6
+../Core/Src/main.c:307:6:onTransferReceived	6
+../Core/Src/main.c:347:6:processCanardTxQueue	4
+../Core/Src/main.c:367:6:process1HzTasks	1
+../Core/Src/main.c:384:5:main	2
+../Core/Src/main.c:448:6:SystemClock_Config	4
+../Core/Src/main.c:496:6:Error_Handler	1

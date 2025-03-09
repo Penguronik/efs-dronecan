@@ -21,12 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdint.h"
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+uint16_t detect_baud_rate(void);
 
 /* USER CODE END PTD */
 
@@ -186,9 +186,8 @@ static void MX_CAN1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN1_Init 2 */
-
   uint16_t new_rate = detect_baud_rate();
-
+  printf("%d", new_rate);
   /* USER CODE END CAN1_Init 2 */
 
 }
@@ -278,7 +277,7 @@ uint16_t detect_baud_rate(void){
 
     if(HAL_CAN_Init(&hcan1) == HAL_OK){
       if(HAL_CAN_Start(&hcan1) == HAL_OK){
-        if(HAL_CAN_ActiveNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
+        if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
           detected_rate = baud_rates[rate];
           HAL_Delay(1000);
         }
@@ -288,7 +287,6 @@ uint16_t detect_baud_rate(void){
   };
   return detected_rate;
 }
-
 /* USER CODE END 4 */
 
 /**

@@ -21,12 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdint.h"
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+uint16_t detect_baud_rate(void);
 
 /* USER CODE END PTD */
 
@@ -186,9 +186,8 @@ static void MX_CAN1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN1_Init 2 */
-
   uint16_t new_rate = detect_baud_rate();
-
+  printf("%d", new_rate);
   /* USER CODE END CAN1_Init 2 */
 
 }
@@ -278,10 +277,16 @@ uint16_t detect_baud_rate(void){
     if (HAL_CAN_Start(&hcan1) != HAL_OK) continue;
     if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) continue;
 
+<<<<<<< HEAD
     uint32_t start_time = HAL_GetTick();
     while(HAL_GetTick() - start_time < 100) {
       if(HAL_CAN_GetRxFifoFillLevel(&hcan1, CAN_RX_FIFO0) > 0){
         if(HAL_CAN_GetRxMessage(&hcan1, CAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK){
+=======
+    if(HAL_CAN_Init(&hcan1) == HAL_OK){
+      if(HAL_CAN_Start(&hcan1) == HAL_OK){
+        if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
+>>>>>>> 820dbab6a2d4ff43a7565e847077d93c373c127f
           detected_rate = baud_rates[rate];
           return detected_rate;
         }
@@ -290,7 +295,6 @@ uint16_t detect_baud_rate(void){
   };
   return 0;
 }
-
 /* USER CODE END 4 */
 
 /**
